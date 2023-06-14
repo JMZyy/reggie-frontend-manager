@@ -1,5 +1,6 @@
 import {caxios} from "@/js/request";
 // 查询列表接口
+
 const getCategoryPage = (params) => {
   return caxios({
     url: '/category/page',
@@ -7,6 +8,9 @@ const getCategoryPage = (params) => {
     params
   })
 }
+
+
+
 
 // 编辑页面反查详情接口
 const queryCategoryById = (id) => {
