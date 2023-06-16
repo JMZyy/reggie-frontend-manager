@@ -1,7 +1,9 @@
 <template>
   <div class="dashboard-container">
     <div class="container">
-      <div class="tableBar">
+      <div class="tableBar">     //这是一个基于Element UI框架的后台管理系统的菜品管理页面的代码。页面包含一个搜索框、一个菜品列表、
+                                 //一个批量操作栏和一个新建菜品按钮。菜品列表使用了Element UI的表格组件，包含了日期、姓名和地址三列信息
+                                 //并且可以进行多选操作。页面还包含了一些操作按钮，如批量删除、批量启售、批量停售等。
         <el-input
             v-model="input"
             placeholder="请输入菜品名称"
@@ -62,7 +64,8 @@
     </div>
   </div>
 </template>
-<script>
+<script>    //展示一个表格，表格中包含了日期、姓名和地址三列，每一行数据都是一个对象，可以通过v-for指令遍历tableData数组来动态生成表格
+            //同时，组件中还可以通过v-model指令绑定multipleSelection数组，实现多选功能。
 export default {
   name: "ElementUITableTest",
   data() {
@@ -113,7 +116,11 @@ export default {
     handleSelectionChange(val) {
       this.multipleSelection = val;
     }
-  }
+  } `toggleSelection(rows)`//该方法用于切换多选表格中的行的选中状态。如果传入了 `rows` 参数，
+                                //则将 `rows` 数组中的每一行都切换选中状态；否则，清空所有选中状态。
+
+`handleSelectionChange(val)`//该方法用于处理多选表格中选中行的变化。当选中行发生变化时，
+     //`val` 参数会被更新为当前选中的行的数组。该方法将 `val` 赋值给组件的 `multipleSelection` 属性，以便在组件中使用选中的行数据。
 }
 </script>
 

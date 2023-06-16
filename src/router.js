@@ -5,14 +5,14 @@ import Dashboard from "./views/DashboardView.vue";
 import EmployeeManagement from "./views/EmployeeManagement.vue";
 import DishManagement from "./views/DishManagement.vue";
 import SetMealManagement from "./views/SetMealManagement.vue";
-import AddSetMeal from "@/components/AddSetMeal";
+import AddSetMeal from "../../../qiyeshixun/reggie-frontend-manager/src/components/AddSetMeal";
 import CategoryManagement from "./views/CategoryManagement.vue";
 import OrderManagement from "./views/OrderManagement.vue";
-import AddEmployee from "@/components/AddEmployee";
-import AddDish from "@/components/AddDish";
+import AddEmployee from "../../../qiyeshixun/reggie-frontend-manager/src/components/AddEmployee";
+import AddDish from "../../../qiyeshixun/reggie-frontend-manager/src/components/AddDish";
 import ElementUITableTest from "@/views/ElementUITableTest";
 
-Vue.use(Router);
+Vue.use(Router); //路由配置
 
 export default new Router({
     routes: [
