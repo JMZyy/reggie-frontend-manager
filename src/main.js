@@ -1,14 +1,14 @@
 import Vue from "vue";
-import App from "@/App.vue";
+import App from "./App.vue";
 import router from "./router";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
-import "./styles/common.css";
-import "./styles/page.css";
-import "./styles/icon/iconfont.css";
-import store from './store';
+import "../../../qiyeshixun/reggie-frontend-manager/src/styles/common.css";
+import "../../../qiyeshixun/reggie-frontend-manager/src/styles/page.css";
+import "../../../qiyeshixun/reggie-frontend-manager/src/styles/icon/iconfont.css";
+import store from '../../../qiyeshixun/reggie-frontend-manager/src/store';
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = false; //这段代码是一个基于Vue.js框架的前端应用程序的入口文件。
 
 Vue.use(ElementUI);
 

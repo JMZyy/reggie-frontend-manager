@@ -1,21 +1,21 @@
 <template>
   <div class="dashboard-container" id="category-app">
     <div class="container">
-      <div
+      <div>
           class="tableBar"
-          style="display: inline-block"
+          style="display: inline-block"      //一个div元素，设置了class为"tableBar"，并且设置了样式"display: inline-block"。
       >
         <el-button
             type="primary"
             class="continue"
             @click="addClass('class')"
-        >
+        > //饿了么UI库的button组件，设置了type为"primary"，class为"continue"，并且绑定了一个点击事件@click，当点击按钮时会调用组件中的addClass方法，并传入参数"class"。
           + 新增菜品分类
         </el-button>
         <el-button
             type="primary"
             @click="addClass('meal')"
-        >
+        >  //另一个饿了么UI库的button组件,设置了type为"primary"，并且绑定了一个点击事件@click，当点击按钮时会调用组件中的addClass方法，并传入参数"meal"。
           + 新增套餐分类
         </el-button>
       </div>
@@ -23,7 +23,7 @@
           :data="tableData"
           stripe
           class="tableBox"
-      >
+      >                               //用el-table 来展示数据
         <el-table-column
             prop="name"
             label="分类名称"
@@ -60,7 +60,7 @@
                 size="small"
                 class="blueBug"
                 @click="editHandle(scope.row)"
-            >
+            >   //使用了 slot-scope 属性来自定义该列的内容，添加了两个按钮，分别用于修改和删除该行数据。
               修改
             </el-button>
             <el-button
@@ -82,18 +82,18 @@
           :total="counts"
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
-      ></el-pagination>
+      ></el-pagination>                   //el-pagination是一个分页组件
     </div>
     <el-dialog
         :title="classData.title"
         :visible.sync="classData.dialogVisible"
         width="30%"
         :before-close="handleClose"
-    >
+    >                                      //el-dialog是一个弹窗组件
       <el-form
           class="demo-form-inline"
           label-width="100px"
-      >
+      >                                 //el-form是表单组件  包含了两个表单项：分类名称和排序
         <el-form-item label="分类名称：">
           <el-input
               v-model="classData.name"
@@ -108,7 +108,7 @@
       <span
           slot="footer"
           class="dialog-footer"
-      >
+      >    #这个组件还包含了一些事件处理函数，如handleSizeChange和handleCurrentChange用于处理分页信息的变化，submitForm用于提交表单数据。
         <el-button
             size="medium"
             @click="classData.dialogVisible = false"
@@ -131,13 +131,20 @@
 </template>
 
 <script>
-import {getCategoryPage,deleCategory,addCategory,editCategory} from "@/api/category"
+import {getCategoryPage,deleCategory,addCategory,editCategory} from "../../../../qiyeshixun/reggie-frontend-manager/src/api/category"
 
 
 export default {
   name: "CategoryManagement",
-  data() {
-    return {
+  data() {  //Vue组件的定义 组件名为"CategoryManagement"，data()是Vue组件中的一个选项，用于定义组件的数据
+            //在这里，data()返回一个对象，包含了组件中需要用到的数据。
+    return {                          //action: 用于存储当前操作的类型，比如添加、编辑、删除等。
+-                                     //counts: 用于存储分类的总数。
+-                                     //page: 当前页码。
+-                                     //pageSize: 每页显示的分类数量。
+-                                     //tableData: 用于存储分类数据的数组。
+-                                     //type: 用于存储分类的类型，比如菜品分类、酒水分类等。
+-                                      //classData: 一个对象，包含了添加菜品分类的相关数据，比如对话框是否可见、分类ID、名称、排序等。
       action: '',
       counts: 0,
       page: 1,
@@ -160,7 +167,8 @@ export default {
   mounted() {
   },
   methods: {
-    async init() {
+    async init() {        //在init()方法中，通过调用getCategoryPage()方法获取数据，并将数据赋值给tableData和counts变量。
+                          //如果获取数据失败，则会弹出错误提示    是一个异步请求方法
       await getCategoryPage({'page': this.page, 'pageSize': this.pageSize}).then(res => {
         if (String(res.code) === '1') {
           this.tableData = res.data.records
@@ -172,7 +180,7 @@ export default {
         this.$message.error('请求出错了：' + err)
       })
     },
-    handleQuery() {
+    handleQuery() {         //handleQuery()方法用于处理查询操作，将当前页数page设置为1，然后调用init()方法重新获取数据。
       this.page = 1;
       this.init();
     },
